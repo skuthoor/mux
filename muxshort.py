@@ -2,39 +2,37 @@ a = [0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1]
 b = [0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1]
 c = [0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1]
 d = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
-y1 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-n=int(input('enter the min terms'))
+y1 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]     # initialing the list
+
+n=int(input('enter the no.of min terms'))
 minterms = list()
+print('enter the minterms')
 for i in range(0,n) :
-     minterms.append(int(input())) #inputing minterms
-     
-#print(minterms)  #min terms printed
-out = dict()
-for i in range(0,16):
-	out[i] = 0
+     minterms.append(int(input())) #inputing minterms in list
      
 for i in minterms :   #assigning the output values
     y1[i] = 1
-    out[i] = 1
-print(out) #output in dict
 
-print(y1,'\n') #output in list
-
+#print(y1,'\n') #output in list
+print('TRUTHTABLE /n')
 print('A','B','C','D','Y')
-for i in range(0,16) :
-     print(a[i] , b[i] , c[i] , d[i] , y1[i] )
+for i in range(0,16) :         
+     print(a[i] , b[i] , c[i] , d[i] , y1[i] )   #printing the truthtable
 
-y1 = tuple(y1)
+y1 = tuple(y1)   #converting the list into tuple, tuple immutable 
 
 q = [1,2,3,4,5,6]
-for k in q :  #process
+for k in q :  #
     y = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     gand = 0
     gnot = 0
     gor = 0
     xor = 0
     xnor = 0 
+
+    print('case', k)
     if k == 1 :
+        # for select line AB
         print('for select line AB')
         y = y1
 
@@ -44,6 +42,7 @@ for k in q :  #process
         f4 = 'D*'
 
     elif k == 2 :
+        #for select line AC
         print('for select line AC')
         y[0] = y1[0]
         y[1] = y1[1]
@@ -182,6 +181,8 @@ for k in q :  #process
         elif i == 8:
             j = 3
 
+        
+
         if y[i+0] == y[i+1] == y[i+3] == y[i+2] == 1 :
             f = 'Vcc'
             print('I',[j] ,'=', f)
@@ -268,6 +269,5 @@ for k in q :  #process
     gates = [0,0,0,0,0,0,0]
     gates[k] = gand + gor + gnot + xnor + xor
     print('total no.of gates required is:', gates[k])    
-
-
-
+    
+    
